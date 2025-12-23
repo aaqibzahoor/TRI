@@ -26,10 +26,7 @@ export default function HeaderOne() {
       id="header-1"
       className={`header-area ${isThankYouPage ? "" : "absolute-header"}`}
     >
-      <div
-        ref={headerRef}
-        id="header-sticky"
-      >
+      <div ref={headerRef} id="header-sticky">
         <div className="navigation">
           <div className="container-fluid">
             <div className="header-inner-box">
@@ -51,20 +48,36 @@ export default function HeaderOne() {
               <div className="header-right">
                 {/*-- Search Button  --*/}
                 {/* <SearchMenu/> */}
-
-                <Link href="tel:1300003515" className="white-btn phone-btn" style={isThankYouPage ? { color: "#000000", borderColor: "#000000" } : {}}>
-                  1300 003 515 <i className="fa-light fa-phone"></i>
+                <Link
+                  href="tel:1300003515"
+                  className="white-btn phone-btn"
+                  style={
+                    isThankYouPage
+                      ? { color: "#000000", borderColor: "#000000" }
+                      : {}
+                  }
+                >
+                  <i className="fa-light fa-phone" style={{ transform: "rotate(0deg)" }}></i> 1300 003 515
                 </Link>
-
                 {/*-- Header Button --*/}
-                {/*-- <a href="quote.html" className="theme-btn d-none d-lg-inline-block">Request a Quote</a> --*/}
-                {/* <div className="header-btn">
-                                    <div className="menu-trigger" onClick={() => setIsActive(true)}>
-                                        <span className="lines"></span>
-                                        <span className="lines"></span>
-                                        <span className="lines"></span>
-                                    </div>
-                                </div> */}
+                {/* --{" "}
+                <a
+                  href="quote.html"
+                  className="theme-btn d-none d-lg-inline-block"
+                >
+                  Request a Quote
+                </a>{" "}
+                --
+                <div className="header-btn">
+                  <div
+                    className="menu-trigger"
+                    onClick={() => setIsActive(true)}
+                  >
+                    <span className="lines"></span>
+                    <span className="lines"></span>
+                    <span className="lines"></span>
+                  </div>
+                </div> */}
               </div>
 
               {/*-- Mobile Menu --*/}
