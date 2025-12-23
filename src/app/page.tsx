@@ -13,7 +13,7 @@ import ContactSectionOne from "@/components/sections/ContactSectionOne";
 
 const servicesData = [
   {
-    subtitle: "Service #1",
+    subtitle: "Service 1",
     title: "Residential Window Replacements",
     description: (
       <>
@@ -35,7 +35,7 @@ const servicesData = [
     image: serviceImg1,
   },
   {
-    subtitle: "Service #2",
+    subtitle: "Service 2",
     title: "Architectural & Bespoke Windows",
     description: (
       <>
@@ -57,7 +57,7 @@ const servicesData = [
     image: serviceImg2,
   },
   {
-    subtitle: "Service #3",
+    subtitle: "Service 3",
     title: "New Homes & Renovations",
     description: (
       <>
@@ -79,7 +79,7 @@ const servicesData = [
     image: serviceImg3,
   },
   {
-    subtitle: "Service #4",
+    subtitle: "Service 4",
     title: "Commercial Aluminium Partitions",
     description: (
       <>
@@ -111,9 +111,6 @@ export default function Home() {
       {/*-- Intro Section --*/}
       <ProcessSectionTwo />
 
-      {/*-- Projects Section --*/}
-      <ServiceSectionThree />
-
       {/*-- Service (Overview) Section --*/}
       <ServiceSectionTwo />
 
@@ -122,12 +119,14 @@ export default function Home() {
         <HeroSectionThree
           index={index}
           key={service.title}
-          subtitle={service.subtitle}
           title={service.title}
           description={service.description}
           image={service.image}
         />
       ))}
+
+      {/*-- Projects Section --*/}
+      <ServiceSectionThree />
 
       {/*-- Team Section --*/}
       <TeamSectionTwo />

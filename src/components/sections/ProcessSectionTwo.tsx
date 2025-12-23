@@ -9,7 +9,7 @@ export default function ProcessSectionTwo() {
         <div className="row gy-5">
           <div className="col-xl-5 col-lg-4 col-md-4">
             <div className="section-title">
-              <h6>Intro</h6>
+              <h6>About</h6>
               <h2 className="visible-slowly-right">The Triple E Advantage</h2>
               <p className="pt-20">
                 Whether you're replacing old windows, renovating your home, or

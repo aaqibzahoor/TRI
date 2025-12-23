@@ -29,7 +29,7 @@ export default function ServiceSectionThree() {
             </div>
           </div>
           <div className="col-xl-2 col-lg-2 col-md-1"></div>
-          <div className="col-xl-4 col-lg-4 col-md-5">
+          {/* <div className="col-xl-4 col-lg-4 col-md-5">
             <p className="pt-40">Showcase:</p>
             <ul>
               <li>Finished home fronts</li>
@@ -37,7 +37,7 @@ export default function ServiceSectionThree() {
               <li>Detail shots</li>
               <li>On-site action and installation process</li>
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="service-wrapper mt-30">

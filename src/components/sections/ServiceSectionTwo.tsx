@@ -4,7 +4,7 @@ export default function ServiceSectionTwo() {
   return (
     <div id="service-2" className="service-section section-padding pb-90">
       <div className="container">
-        <div className="row align-items-center">
+        <div className="row align-items-start">
           <div className="col-xl-6 col-lg-5 col-md-6">
             <div className="section-title">
               <h6>Services</h6>
@@ -13,8 +13,7 @@ export default function ServiceSectionTwo() {
               </h2>
             </div>
           </div>
-          <div className="col-xl-2 col-lg-3 col-md-1"></div>
-          <div className="col-xl-4 col-lg-4 col-md-5">
+          <div className="col-xl-6 col-lg-4 col-md-5">
             <p className="pt-40">
               At Triple E Windows, we don’t just supply windows; we deliver
               complete glazing solutions. Whether you are upgrading a single

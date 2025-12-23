@@ -4,13 +4,11 @@ import Image, { StaticImageData } from "next/image";
 
 export default function HeroSectionThree({
   index,
-  subtitle,
   title,
   description,
   image,
 }: {
   index: number;
-  subtitle: string;
   title: string;
   description: React.ReactNode;
   image: string | StaticImageData;
@@ -21,7 +19,6 @@ export default function HeroSectionThree({
         <div className="col-xl-5 col-lg-5">
           <div className="hero-content-wrap">
             <div className="section-title">
-              <h6>{subtitle}</h6>
               <h2 className="visible-slowly-right">{title}</h2>
             </div>
             <p className="wow fadeInUp animated" data-wow-delay="400ms">

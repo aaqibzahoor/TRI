@@ -1,5 +1,5 @@
 
-/* 28. Footer Area  
+/* 28. Footer Area
 -------------------*/
 
 // Footer # 01 & 02
@@ -8,7 +8,6 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    height: 500px;
     position: relative;
     z-index: 1;
     @media #{$xs}{
@@ -76,5 +75,5 @@ a.footer-btn.bordered-btn {
     @media #{$xs}{
         margin-top: 15px;
     }
-    
+
 }
