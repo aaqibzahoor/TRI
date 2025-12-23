@@ -11,7 +11,6 @@ import serviceImg9 from "@/assets/img/tri/window8.jpg";
 import serviceImg10 from "@/assets/img/tri/window10.JPG";
 import serviceImg11 from "@/assets/img/tri/window12.jpg";
 import serviceImg12 from "@/assets/img/tri/window17.jpg";
-import Link from "next/link";
 
 export default function ServiceSectionThree() {
   return (

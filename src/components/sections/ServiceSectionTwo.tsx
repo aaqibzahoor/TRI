@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 export default function ServiceSectionTwo() {
   return (
     <div id="service-2" className="service-section section-padding pb-90">

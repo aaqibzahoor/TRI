@@ -8,7 +8,16 @@ import "./ContactSectionOne.css";
 
 export default function ContactSectionOne() {
   const router = useRouter();
-  const [formData, setFormData] = useState<any>({
+  const [formData, setFormData] = useState<{
+    name: string;
+    email: string;
+    phone: string;
+    suburb: string;
+    service_type: string;
+    project_details: string;
+    plans: File | null;
+    client_id: number;
+  }>({
     name: "",
     email: "",
     phone: "",
@@ -19,12 +28,12 @@ export default function ContactSectionOne() {
     client_id: 2,
   });
 
-  const [errors, setErrors] = useState<any>({});
+  const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [submitting, setSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
   // const [captchaToken, setCaptchaToken] = useState("");
 
-  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL + "/leads";
+  // const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL + "/leads";
   // const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleChange = (
@@ -33,34 +42,34 @@ export default function ContactSectionOne() {
     >
   ) => {
     const { name, value } = e.target;
-    setFormData((prev: any) => ({ ...prev, [name]: value }));
-    setErrors((prev: any) => ({ ...prev, [name]: null }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: null }));
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData((prev: any) => ({ ...prev, plans: e.target.files![0] }));
+      setFormData((prev) => ({ ...prev, plans: e.target.files![0] }));
     }
   };
 
-  const validate = () => {
-    const newErrors: any = {};
-    if (!formData.name) newErrors.name = "Full Name is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.phone) newErrors.phone = "Phone is required";
-    if (!formData.suburb) newErrors.suburb = "Suburb is required";
-    if (!formData.service_type)
-      newErrors.service_type = "Service Type is required";
-    if (!formData.project_details)
-      newErrors.project_details = "Project details are required";
+  // const validate = () => {
+  //   const newErrors: Record<string, string> = {};
+  //   if (!formData.name) newErrors.name = "Full Name is required";
+  //   if (!formData.email) newErrors.email = "Email is required";
+  //   if (!formData.phone) newErrors.phone = "Phone is required";
+  //   if (!formData.suburb) newErrors.suburb = "Suburb is required";
+  //   if (!formData.service_type)
+  //     newErrors.service_type = "Service Type is required";
+  //   if (!formData.project_details)
+  //     newErrors.project_details = "Project details are required";
 
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  //   setErrors(newErrors);
+  //   return Object.keys(newErrors).length === 0;
+  // };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
+    // if (!validate()) return;
 
     setSubmitting(true);
     setSuccessMessage("");
@@ -343,11 +352,7 @@ export default function ContactSectionOne() {
                 )}
 
                 <div className="submit-container">
-                  <button
-                    id="submit-btn"
-                    type="submit"
-                    disabled={submitting}
-                  >
+                  <button id="submit-btn" type="submit" disabled={submitting}>
                     <span>
                       {submitting ? "Sending Request..." : "Request a Quote"}
                     </span>

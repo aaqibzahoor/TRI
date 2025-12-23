@@ -7,10 +7,6 @@ import ProcessSectionOne from "@/components/sections/ProcessSectionOne";
 import TestimonialSectionOne from "@/components/sections/TestimonialSectionOne";
 import TeamSectionOne from "@/components/sections/TeamSectionOne";
 import BlogSectionOne from "@/components/sections/BlogSectionOne";
-import ProcessSectionTwo from "@/components/sections/ProcessSectionTwo";
-import ServiceSectionThree from "@/components/sections/ServiceSectionThree";
-import ServiceSectionTwo from "@/components/sections/ServiceSectionTwo";
-import HeroSectionThree from "@/components/sections/HeroSectionThree";
 
 export default function Home() {
   return (

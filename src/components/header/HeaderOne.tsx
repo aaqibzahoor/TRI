@@ -8,7 +8,6 @@ import MainMenu from "@/components/header/MainMenu";
 import MobileMenu from "@/components/header/MobileMenu";
 import OffCanvas from "@/components/OffCanvas";
 import { useRef, useState } from "react";
-import SearchMenu from "@/components/header/SearchMenu";
 import useStickyHeaders from "@/utils/useStickyHeaders";
 import { usePathname } from "next/navigation";
 import "./HeaderOne.css";
@@ -57,7 +56,11 @@ export default function HeaderOne() {
                       : {}
                   }
                 >
-                  <i className="fa-light fa-phone" style={{ transform: "rotate(0deg)" }}></i> 1300 003 515
+                  <i
+                    className="fa-light fa-phone"
+                    style={{ transform: "rotate(0deg)" }}
+                  ></i>{" "}
+                  1300 003 515
                 </Link>
                 {/*-- Header Button --*/}
                 {/* --{" "}
