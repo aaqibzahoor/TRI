@@ -14,7 +14,7 @@ export default function HomeThree() {
     return (
         <>
             {/*-- Hero Area --*/}
-            <HeroSectionThree subtitle="" title="" description="" image=""/>
+            <HeroSectionThree index={0} subtitle="" title="" description="" image=""/>
 
             {/*-- Service Section --*/}
             <ServiceSectionThree/>
