@@ -55,7 +55,7 @@ export default function HeroSectionOne() {
                     uncompromising attention to detail.
                   </p>
                   <div className="d-flex gap-2">
-                    <Link href="#services" className="white-btn mt-40">
+                    <Link href="#service-2" className="white-btn mt-40">
                       Our Services <i className="fa-light fa-arrow-right"></i>
                     </Link>
                     <Link href="#contact" className="white-btn mt-40">

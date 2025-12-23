@@ -1,4 +1,6 @@
 import Link from "next/link";
+import introImg from "@/assets/img/tri/team4.JPG";
+import Image from "next/image";
 
 export default function ProcessSectionTwo() {
   return (
@@ -15,9 +17,10 @@ export default function ProcessSectionTwo() {
                 delivers quality you can see and craftsmanship you can trust.
               </p>
             </div>
-            <Link href="#projects" className="bordered-btn">
+            <Link href="#service-3" className="bordered-btn">
               Our Work<i className="fa-light fa-arrow-right"></i>
             </Link>
+            <Image src={introImg} alt="" width={550} height={505} className="pt-30 object-fit-cover" />
           </div>
           <div className="col-xl-1 col-lg-1 col-md-1"></div>
           <div className="col-xl-6 col-lg-7 col-md-7">
