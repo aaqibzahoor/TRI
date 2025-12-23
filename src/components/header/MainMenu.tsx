@@ -27,7 +27,7 @@ export default function MainMenu() {
                                 </a>
                             )}
 
-                            {menu.subMenu && (
+                            {/* {menu.subMenu && (
                                 <ul className="sub-menu">
                                     {menu.subMenu.map((sub, subIdx) => (
                                         <li key={subIdx}>
@@ -40,7 +40,7 @@ export default function MainMenu() {
                                         </li>
                                     ))}
                                 </ul>
-                            )}
+                            )} */}
                         </li>
                     );
                 })}

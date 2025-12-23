@@ -14,45 +14,48 @@ export interface MenuItem {
 export const menuData: MenuItem[] = [
     {
         title: "Home",
-        subMenu: [
-            { title: "Home - One", path: "/" },
-            { title: "Home - Two", path: "/home-2" },
-            { title: "Home - Three", path: "/home-3" },
-        ],
+        path: "/",
+        // subMenu: [
+        //     { title: "Home - One", path: "/" },
+        //     { title: "Home - Two", path: "/home-2" },
+        //     { title: "Home - Three", path: "/home-3" },
+        // ],
     },
+    // {
+    //     title: "Pages",
+    //     subMenu: [
+    //         { title: "About Us", path: "/about" },
+    //         { title: "Our Services", path: "/services" },
+    //         { title: "Our Team", path: "/team" },
+    //         { title: "Pricing", path: "/price" },
+    //         { title: "FAQs", path: "/faq" },
+    //     ],
+    // },
     {
-        title: "Pages",
-        subMenu: [
-            { title: "About Us", path: "/about" },
-            { title: "Our Services", path: "/services" },
-            { title: "Our Team", path: "/team" },
-            { title: "Pricing", path: "/price" },
-            { title: "FAQs", path: "/faq" },
-        ],
+        title: "Projects",
+        path: "#service-3",
+        // subMenu: [
+        //     { title: "Projects", path: "/projects" },
+        //     { title: "Project Details", path: "/projects/details" },
+        // ],
     },
     {
         title: "Services",
-        subMenu: [
-            { title: "Services", path: "/services" },
-            { title: "Service Details", path: "/services/details" },
-        ],
+         path: "#service-2",
+        // subMenu: [
+        //     { title: "Services", path: "/services" },
+        //     { title: "Service Details", path: "/services/details" },
+        // ],
     },
-    {
-        title: "Projects",
-        subMenu: [
-            { title: "Projects", path: "/projects" },
-            { title: "Project Details", path: "/projects/details" },
-        ],
-    },
-    {
-        title: "Blog",
-        subMenu: [
-            { title: "Blog", path: "/blog" },
-            { title: "Blog Details", path: "/blog/details" },
-        ],
-    },
+    // {
+    //     title: "Blog",
+    //     subMenu: [
+    //         { title: "Blog", path: "/blog" },
+    //         { title: "Blog Details", path: "/blog/details" },
+    //     ],
+    // },
     {
         title: "Contact",
-        path: "/contact",
+        path: "#contact",
     },
 ];

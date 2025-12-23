@@ -25,6 +25,10 @@ import PreLoader from "@/components/PreLoader";
 export const metadata: Metadata = {
   title: "Triple E Windows",
   description: "Triple E Windows",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({

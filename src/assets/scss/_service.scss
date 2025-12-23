@@ -1,5 +1,5 @@
 
-/* -- 19. Service Section  
+/* -- 19. Service Section
 -------------------------*/
 
 // Service # 01
@@ -57,20 +57,20 @@
   @media #{$xs}{
     margin-top: 30px;
   }
-    
+
 }
 }
 
 
-// CP Custom Accordion 
+// CP Custom Accordion
 
 .cp-custom-accordion .accordion-items {
     margin-bottom: 20px;
-    @media #{$xs} {        
+    @media #{$xs} {
       margin-top: 30px;
-  } 
   }
-  .cp-custom-accordion .accordion-buttons {    
+  }
+  .cp-custom-accordion .accordion-buttons {
     position: relative;
     width: 100%;
     padding: 20px 0px 30px 20px;
@@ -80,7 +80,7 @@
     font-weight: 400;
     color: #171717;
     border: none;
-    border-bottom: 1px solid #eee;    
+    border-bottom: 1px solid #eee;
 
     @media #{$xs}{
       padding: 10px 0 20px 20px;
@@ -92,7 +92,7 @@
     font-size: 15px;
     margin-right: 15px;
 }
-  
+
   @media only screen and (min-width: 992px) and (max-width: 1199px) {
     .cp-custom-accordion .accordion-buttons {
       padding: 20px 28px;
@@ -136,7 +136,7 @@
   .cp-custom-accordion .accordion-body {
     background-color: #fff;
     color: #878787;
-    padding: 25px 0;    
+    padding: 25px 0;
     padding-left: 30px;
     padding-right: 130px;
     position: relative;
@@ -164,15 +164,15 @@
       font-size: 16px;
     }
   }
-  
+
 
 .cp-custom-accordion {
   padding-left: 0;
-  @media #{$md} {        
+  @media #{$md} {
 	margin-top: 30px;
     padding-left: 0;
 	}
-  @media #{$xs} {        
+  @media #{$xs} {
 	margin-top: 30px;
     padding-left: 0;
 	}
@@ -194,22 +194,23 @@
   @media #{$xs}{
     margin-top: 0;
   }
-    
+
 }
 
 // Service # 02
 
 #service-2{
 
-  .single-service-item{    
-    padding: 50px;   
+  .single-service-item{
+    padding: 50px;
     position: relative;
     margin-bottom: 30px;
     @media #{$xs}{
       padding-left: 0;
+      padding-right: 0;
       text-align: center;
       margin-bottom: 0;
-    } 
+    }
   }
 
   .border-right {
@@ -223,7 +224,7 @@
     transform: translate(0, 0);
 }
 
-  
+
 
   .single-service-item img {
     border-radius: 0;
@@ -286,10 +287,10 @@
   @media #{$xs}{
     padding-top: 0;
   }
-    
+
 }
 
-// Service Page 
+// Service Page
 
 .service-img-wrap {
     padding-right: 20px;
@@ -323,7 +324,7 @@
   @media #{$xs}{
     margin-top: 0;
   }
-    
+
 }
 
 // Service Details
@@ -380,7 +381,7 @@
     }
     textarea {
         height: 150px;
-        
+
     }
     form {
         margin-top: 30px;
@@ -419,7 +420,7 @@
         font-size: 30px;
         color: #fff;
     }
-    
+
     .play-btn {
         background: $theme_color;
         width: 90px;
