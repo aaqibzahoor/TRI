@@ -33,7 +33,7 @@ export const menuData: MenuItem[] = [
     // },
     {
         title: "Projects",
-        path: "#service-3",
+        path: "/#service-3",
         // subMenu: [
         //     { title: "Projects", path: "/projects" },
         //     { title: "Project Details", path: "/projects/details" },
@@ -41,7 +41,7 @@ export const menuData: MenuItem[] = [
     },
     {
         title: "Services",
-         path: "#service-2",
+         path: "/#service-2",
         // subMenu: [
         //     { title: "Services", path: "/services" },
         //     { title: "Service Details", path: "/services/details" },
@@ -56,6 +56,6 @@ export const menuData: MenuItem[] = [
     // },
     {
         title: "Contact",
-        path: "#contact",
+        path: "/#contact",
     },
 ];

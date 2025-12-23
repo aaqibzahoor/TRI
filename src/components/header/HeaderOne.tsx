@@ -3,23 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import logoImg from "@/assets/img/tri/tri-white-logo.png";
+import logoImg2 from "@/assets/img/tri/tri-logo.png";
 import MainMenu from "@/components/header/MainMenu";
 import MobileMenu from "@/components/header/MobileMenu";
 import OffCanvas from "@/components/OffCanvas";
 import { useRef, useState } from "react";
 import SearchMenu from "@/components/header/SearchMenu";
 import useStickyHeaders from "@/utils/useStickyHeaders";
+import { usePathname } from "next/navigation";
 import "./HeaderOne.css";
 
 export default function HeaderOne() {
   const [isActive, setIsActive] = useState(false);
   const headerRef = useRef(null);
+  const pathname = usePathname();
+  const isThankYouPage = pathname === "/thank-you";
 
   useStickyHeaders([headerRef]);
 
   return (
-    <div id="header-1" className="header-area absolute-header">
-      <div ref={headerRef} id="header-sticky">
+    <div
+      id="header-1"
+      className={`header-area ${isThankYouPage ? "" : "absolute-header"}`}
+    >
+      <div
+        ref={headerRef}
+        id="header-sticky"
+      >
         <div className="navigation">
           <div className="container-fluid">
             <div className="header-inner-box">
@@ -29,7 +39,12 @@ export default function HeaderOne() {
               {/*-- Logo --*/}
               <div className="logo">
                 <Link className="navbar-brand" href="/">
-                  <Image src={logoImg} alt="" className=" h-auto" style={{ width: "200px" }} />
+                  <Image
+                    src={isThankYouPage ? logoImg2 : logoImg}
+                    alt=""
+                    className=" h-auto"
+                    style={{ width: "200px" }}
+                  />
                 </Link>
               </div>
 
@@ -37,7 +52,7 @@ export default function HeaderOne() {
                 {/*-- Search Button  --*/}
                 {/* <SearchMenu/> */}
 
-                <Link href="tel:1300003515" className="white-btn phone-btn">
+                <Link href="tel:1300003515" className="white-btn phone-btn" style={isThankYouPage ? { color: "#000000", borderColor: "#000000" } : {}}>
                   1300 003 515 <i className="fa-light fa-phone"></i>
                 </Link>
 
