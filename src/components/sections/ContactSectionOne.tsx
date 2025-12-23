@@ -1,68 +1,359 @@
+"use client";
 import Image from "next/image";
 import contactImg from "@/assets/img/tri/team3.JPG";
+import React, { useState } from "react";
+// import ReCAPTCHA from "react-google-recaptcha";
+import { useRouter } from "next/navigation";
+import "./ContactSectionOne.css";
 
 export default function ContactSectionOne() {
+  const router = useRouter();
+  const [formData, setFormData] = useState<any>({
+    name: "",
+    email: "",
+    phone: "",
+    suburb: "",
+    service_type: "",
+    project_details: "",
+    plans: null,
+    client_id: 2,
+  });
+
+  const [errors, setErrors] = useState<any>({});
+  const [submitting, setSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  // const [captchaToken, setCaptchaToken] = useState("");
+
+  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL + "/leads";
+  // const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement
+    >
+  ) => {
+    const { name, value } = e.target;
+    setFormData((prev: any) => ({ ...prev, [name]: value }));
+    setErrors((prev: any) => ({ ...prev, [name]: null }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setFormData((prev: any) => ({ ...prev, plans: e.target.files![0] }));
+    }
+  };
+
+  const validate = () => {
+    const newErrors: any = {};
+    if (!formData.name) newErrors.name = "Full Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.phone) newErrors.phone = "Phone is required";
+    if (!formData.suburb) newErrors.suburb = "Suburb is required";
+    if (!formData.service_type)
+      newErrors.service_type = "Service Type is required";
+    if (!formData.project_details)
+      newErrors.project_details = "Project details are required";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    setSubmitting(true);
+    setSuccessMessage("");
+    setErrors({});
+
+    const dataToSend = new FormData();
+    dataToSend.append("name", formData.name);
+    dataToSend.append("email", formData.email);
+    dataToSend.append("phone", formData.phone);
+    dataToSend.append("suburb", formData.suburb);
+    dataToSend.append("service_type", formData.service_type);
+    dataToSend.append("project_details", formData.project_details);
+    dataToSend.append("client_id", formData.client_id.toString());
+    if (formData.plans) {
+      dataToSend.append("plans", formData.plans);
+    }
+    // if (captchaToken) {
+    //   dataToSend.append("g-recaptcha-response", captchaToken);
+    // }
+
+    // try {
+    //   const response = await fetch(API_URL, {
+    //     method: "POST",
+    //     body: dataToSend,
+    //   });
+
+    //   const data = await response.json();
+    //   if (!response.ok) {
+    //     if (data.errors) setErrors(data.errors);
+    //     else if (data.error?.message) setErrors({ submit: data.error.message });
+    //     return;
+    //   }
+
+    //   setSuccessMessage("Quote request submitted successfully!");
+    //   setFormData({
+    //     name: "",
+    //     email: "",
+    //     phone: "",
+    //     suburb: "",
+    //     service_type: "",
+    //     project_details: "",
+    //     plans: null,
+    //     client_id: 2,
+    //   });
+    //   // setCaptchaToken("");
+    //   router.push("/thank-you");
+    // } catch (err) {
+    //   console.error(err);
+    //   setErrors({ submit: "Something went wrong. Please try again." });
+    // } finally {
+    //   setSubmitting(false);
+    // }
+
+    router.push("/thank-you");
+  };
+
   return (
-    <div id="contact" className="contact-section section-padding">
+    <div
+      id="contact"
+      className="contact-section section-padding modern-section"
+    >
       <div className="container">
-        <div className="contact-info-wrap">
-          <div className="row mt-60">
-            <div className="col-xl-6">
-              <Image src={contactImg} alt="" width={800} height={800} />
-              {/* <div className="google-map">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3690.404245521138!2d91.80989606467384!3d22.338360085303748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sdewanhat%20near%20Chattogram!5e0!3m2!1sen!2sbd!4v1677069314806!5m2!1sen!2sbd"
-                  width="600"
-                  height="600"
-                  className="border-0"
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </div> */}
+        <div className="row align-items-stretch mt-5">
+          {/* Left Image Column */}
+          <div className="col-lg-6 mb-5 mb-lg-0">
+            <div className="image-container">
+              <Image
+                src={contactImg}
+                alt="Contact Team"
+                fill
+                className="img-fluid"
+                style={{ objectFit: "cover" }}
+              />
             </div>
-            <div className="col-xl-6">
-              <div className="contact-info">
-                <div className="section-title">
-                  <h2 className="visible-slowly-right">Contact Us</h2>
-                </div>
-                {/* <div className="contact-info-inner">
-                  <div
-                    className="single-contact-info wow fadeInUp animated"
-                    data-wow-delay="200ms"
-                  >
-                    <p>Email</p>
-                    <h4>info@florix.com</h4>
-                  </div>
-                  <div
-                    className="single-contact-info wow fadeInUp animated"
-                    data-wow-delay="400ms"
-                  >
-                    <p>Phone</p>
-                    <h4>(123) 456-7890</h4>
-                  </div>
-                  <div
-                    className="single-contact-info wow fadeInUp animated"
-                    data-wow-delay="600ms"
-                  >
-                    <p>Address</p>
-                    <h4>77 Kennedy Road, Manhattan, New York - USA</h4>
-                  </div>
-                  <div className="social-area">
-                    <a href="#">
-                      <i className="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fab fa-instagram"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fab fa-linkedin-in"></i>
-                    </a>
-                    <a href="#">
-                      <i className="fab fa-skype"></i>
-                    </a>
-                  </div>
-                </div> */}
+          </div>
+
+          {/* Right Form Column */}
+          <div className="col-lg-6">
+            <div className="modern-card">
+              <div className="section-header">
+                <h2 className="visible-slowly-right">Request a Quote</h2>
+                <p>
+                  Fill out the form below and we'll get back to you with a
+                  custom plan.
+                </p>
               </div>
+
+              <form onSubmit={handleSubmit}>
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="name">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        className="modern-input"
+                        placeholder="Full Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                      />
+                      {errors.name && (
+                        <span className="error-text">{errors.name}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="email">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        className="modern-input"
+                        placeholder="Email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                      {errors.email && (
+                        <span className="error-text">{errors.email}</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="phone">
+                        Phone
+                      </label>
+                      <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        className="modern-input"
+                        placeholder="Phone Number"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                      {errors.phone && (
+                        <span className="error-text">{errors.phone}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="suburb">
+                        Suburb
+                      </label>
+                      <input
+                        type="text"
+                        name="suburb"
+                        id="suburb"
+                        className="modern-input"
+                        placeholder="Suburb"
+                        value={formData.suburb}
+                        onChange={handleChange}
+                      />
+                      {errors.suburb && (
+                        <span className="error-text">{errors.suburb}</span>
+                      )}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="modern-input-group">
+                  <label className="modern-label" htmlFor="service_type">
+                    Service Type
+                  </label>
+                  <div style={{ position: "relative" }}>
+                    <select
+                      name="service_type"
+                      id="service_type"
+                      className="modern-select"
+                      value={formData.service_type}
+                      onChange={handleChange}
+                    >
+                      <option value="">Select Service Type</option>
+                      <option value="Window replacement">
+                        Window replacement
+                      </option>
+                      <option value="Architectural or bespoke window">
+                        Architectural or bespoke window
+                      </option>
+                      <option value="New build">New build</option>
+                      <option value="Renovation">Renovation</option>
+                    </select>
+                    <div
+                      style={{
+                        position: "absolute",
+                        right: "15px",
+                        top: "50%",
+                        transform: "translateY(-50%)",
+                        pointerEvents: "none",
+                        color: "#666",
+                      }}
+                    >
+                      <svg
+                        width="12"
+                        height="8"
+                        viewBox="0 0 12 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1 1.5L6 6.5L11 1.5"
+                          stroke="#666"
+                          strokeWidth="2"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  {errors.service_type && (
+                    <span className="error-text">{errors.service_type}</span>
+                  )}
+                </div>
+
+                <div className="modern-input-group">
+                  <label className="modern-label" htmlFor="plans">
+                    Upload plans (optional)
+                  </label>
+                  <input
+                    type="file"
+                    name="plans"
+                    id="plans"
+                    className="modern-input modern-file-input"
+                    onChange={handleFileChange}
+                  />
+                </div>
+
+                <div className="modern-input-group">
+                  <label className="modern-label" htmlFor="project_details">
+                    Project details
+                  </label>
+                  <textarea
+                    name="project_details"
+                    id="project_details"
+                    className="modern-textarea"
+                    placeholder="Tell us about what you need..."
+                    value={formData.project_details}
+                    onChange={handleChange}
+                  />
+                  {errors.project_details && (
+                    <span className="error-text">{errors.project_details}</span>
+                  )}
+                </div>
+
+                <div className="my-4">
+                  {/* {RECAPTCHA_SITE_KEY ? (
+                    <ReCAPTCHA
+                      sitekey={RECAPTCHA_SITE_KEY}
+                      onChange={(token) => setCaptchaToken(token || "")}
+                    />
+                  ) : (
+                    <div style={{ color: "red", fontSize: "0.8rem" }}>
+                      Recaptcha Key Missing
+                    </div>
+                  )} */}
+                  {errors["g-recaptcha-response"] && (
+                    <span className="error-text">
+                      {errors["g-recaptcha-response"]}
+                    </span>
+                  )}
+                </div>
+
+                {errors.submit && (
+                  <p className="error-text" style={{ fontSize: "1rem" }}>
+                    {errors.submit}
+                  </p>
+                )}
+                {successMessage && (
+                  <p className="success-text">{successMessage}</p>
+                )}
+
+                <div className="submit-container">
+                  <button
+                    id="submit-btn"
+                    type="submit"
+                    disabled={submitting}
+                  >
+                    <span>
+                      {submitting ? "Sending Request..." : "Request a Quote"}
+                    </span>
+                  </button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
