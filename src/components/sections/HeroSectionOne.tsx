@@ -28,40 +28,42 @@ export default function HeroSectionOne() {
         className="owl-carousel"
       >
         <SwiperSlide className="single-slide-item d-flex align-items-center banner-bg-1">
-          <div className="overlay-4"></div>
-          <div className="hero-area-content">
-            <div className="container">
-              <div className="row align-items-center">
-                <div
-                  className="col-xl-12 col-lg-12 col-md-10 wow fadeInUp animated"
-                  data-wow-delay=".2s"
-                >
-                  <div className="section-title">
-                    <h6 className="text-white">TRIPLE E WINDOWS</h6>
-                    <h1 className="text-white">
-                      <span>Premium Residential Window</span> Replacements &{" "}
-                      <br /> Architectural Aluminium Windows
-                    </h1>
-                  </div>
-                  <p className="text-white">
-                    Melbourne-made. Architecturally crafted. Installed with
-                    precision.
-                  </p>
-                  <p className="text-white">
-                    Bring your home to life with high-quality aluminium window
-                    replacements, bespoke architectural window designs, and
-                    complete window packages for renovations and new builds.
-                    Fabricated locally in Cranbourne and installed with
-                    uncompromising attention to detail.
-                  </p>
-                  <div className="d-flex gap-2">
-                    <Link href="#service-2" className="white-btn mt-40">
-                      Our Services <i className="fa-light fa-arrow-right"></i>
-                    </Link>
-                    <Link href="#contact" className="white-btn mt-40">
-                      Request a Quote{" "}
-                      <i className="fa-light fa-arrow-right"></i>
-                    </Link>
+          <div className="container">
+            <div className="overlay-4"></div>
+            <div className="px-0 pt-5">
+              <div className="container">
+                <div className="row align-items-center">
+                  <div
+                    className="col-xl-12 col-lg-12 col-md-10 wow fadeInUp animated"
+                    data-wow-delay=".2s"
+                  >
+                    <div className="section-title">
+                      <h6 className="text-white">TRIPLE E WINDOWS</h6>
+                      <h1 className="text-white">
+                        <span>Premium Residential Window</span> Replacements &{" "}
+                        <br /> Architectural Aluminium Windows
+                      </h1>
+                    </div>
+                    <p className="text-white">
+                      Melbourne-made. Architecturally crafted. Installed with
+                      precision.
+                    </p>
+                    <p className="text-white">
+                      Bring your home to life with high-quality aluminium window
+                      replacements, bespoke architectural window designs, and
+                      complete window packages for renovations and new builds.
+                      Fabricated locally in Cranbourne and installed with
+                      uncompromising attention to detail.
+                    </p>
+                    <div className="d-flex gap-2">
+                      <Link href="#service-2" className="white-btn mt-40">
+                        Our Services <i className="fa-light fa-arrow-right"></i>
+                      </Link>
+                      <Link href="#contact" className="white-btn mt-40">
+                        Request a Quote{" "}
+                        <i className="fa-light fa-arrow-right"></i>
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>

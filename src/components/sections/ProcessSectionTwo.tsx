@@ -9,7 +9,7 @@ export default function ProcessSectionTwo() {
         <div className="row gy-5">
           <div className="col-xl-5 col-lg-4 col-md-4">
             <div className="section-title">
-              <h6>Intro/overview</h6>
+              <h6>Intro</h6>
               <h2 className="visible-slowly-right">The Triple E Advantage</h2>
               <p className="pt-20">
                 Whether you're replacing old windows, renovating your home, or
@@ -20,7 +20,13 @@ export default function ProcessSectionTwo() {
             <Link href="#service-3" className="bordered-btn">
               Our Work<i className="fa-light fa-arrow-right"></i>
             </Link>
-            <Image src={introImg} alt="" width={550} height={505} className="pt-30 object-fit-cover" />
+            <Image
+              src={introImg}
+              alt=""
+              width={550}
+              height={505}
+              className="pt-30 object-fit-cover"
+            />
           </div>
           <div className="col-xl-1 col-lg-1 col-md-1"></div>
           <div className="col-xl-6 col-lg-7 col-md-7">

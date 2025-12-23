@@ -118,8 +118,9 @@ export default function Home() {
       <ServiceSectionTwo />
 
       {/*-- Service Section --*/}
-      {servicesData.map((service) => (
+      {servicesData.map((service, index) => (
         <HeroSectionThree
+          index={index}
           key={service.title}
           subtitle={service.subtitle}
           title={service.title}

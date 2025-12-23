@@ -7,7 +7,7 @@ export default function ServiceSectionTwo() {
         <div className="row align-items-center">
           <div className="col-xl-6 col-lg-5 col-md-6">
             <div className="section-title">
-              <h6>Services (Overview)</h6>
+              <h6>Services</h6>
               <h2 className="visible-slowly-right">
                 Complete Aluminium Solutions. <br /> Locally Crafted.
               </h2>
