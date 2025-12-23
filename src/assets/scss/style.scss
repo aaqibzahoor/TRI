@@ -1,0 +1,72 @@
+/*
+Template Name: Florix
+Template URI:
+Description: Flooring & Tilling Services Next Template
+Author: devstarit
+Author URI:
+Version: 1.0
+ */
+
+@import "bootstrap/scss/bootstrap";
+
+@import 'variables';
+@import 'common';
+@import 'spacer';
+@import 'pre-loader';
+@import 'mouse-cursor';
+@import 'search';
+@import 'header';
+@import 'off-canvas';
+@import 'hero-area';
+@import 'service';
+@import 'about';
+@import 'project';
+@import 'process';
+@import 'testimonial';
+@import 'team';
+@import 'blog';
+@import 'cta';
+@import 'contact';
+@import 'counter';
+@import 'footer';
+@import 'breadcrumb';
+@import 'gallery';
+@import 'timeline';
+@import 'price';
+@import 'faq';
+@import "progress-bar";
+
+.process-bg {
+  background-image: url('../img/process-bg.jpg');
+}
+
+.blog-section-bg2 {
+  background-image: url('../img/blog-bg.jpg');
+}
+
+.team-bg2 {
+  background-image: url('../img/tri/window4.jpg');
+}
+
+.cta-bg-2 {
+  background-image: url('../img/cta-bg.jpg');
+}
+
+.footer-bg {
+  background-image: url('../img/tri/window5.jpg');
+}
+
+.footer-bg-2 {
+  background-image: url('../img/footer-bg-2.jpg');
+}
+
+/*
+
+
+
+
+
+
+
+
+ */

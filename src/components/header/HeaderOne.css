@@ -1,0 +1,9 @@
+.phone-btn {
+   display: inline-block;
+}
+
+@media (max-width: 767px) {
+   .phone-btn {
+      display: none;
+   }
+}

@@ -1,0 +1,38 @@
+.progress-bar-area {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+.single-bar-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single-bar-item h5 {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 15px 0;
+}
+.barfiller {
+  background: $gray;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 2px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, $text_dark, $text_dark);
+  border-radius: 20px;
+  transition: width 1.5s ease-in-out;
+}
+
+.bar-percentage {
+  font-size: 16px;
+  font-weight: 600;
+}
