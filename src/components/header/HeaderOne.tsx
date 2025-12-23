@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import logoImg from "@/assets/img/tri/tri-logo.png";
+import logoImg from "@/assets/img/tri/tri-white-logo.png";
 import MainMenu from "@/components/header/MainMenu";
 import MobileMenu from "@/components/header/MobileMenu";
 import OffCanvas from "@/components/OffCanvas";
