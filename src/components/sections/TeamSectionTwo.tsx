@@ -1,5 +1,5 @@
 import Image from "next/image";
-import teamImg from "@/assets/img/tri/team.jpg";
+import teamImg from "@/assets/img/tri/team.JPG";
 
 export default function TeamSectionTwo() {
   return (
