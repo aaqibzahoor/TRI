@@ -25,7 +25,7 @@ export default function ContactSectionOne() {
     service_type: "",
     project_details: "",
     attachment: null,
-    client_id: 2,
+    client_id: 8,
   });
 
   const [errors, setErrors] = useState<Record<string, string | null>>({});
@@ -289,7 +289,7 @@ export default function ContactSectionOne() {
                   )}
                 </div>
 
-                <div className="modern-input-group">
+                {/* <div className="modern-input-group">
                   <label className="modern-label" htmlFor="attachment">
                     Upload plans (optional)
                   </label>
@@ -300,7 +300,7 @@ export default function ContactSectionOne() {
                     className="modern-input modern-file-input"
                     onChange={handleFileChange}
                   />
-                </div>
+                </div> */}
 
                 <div className="modern-input-group">
                   <label className="modern-label" htmlFor="project_details">
