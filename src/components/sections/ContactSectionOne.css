@@ -40,6 +40,12 @@
     outline: none;
 }
 
+.modern-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
 .modern-input:focus,
 .modern-select:focus,
 .modern-textarea:focus {
