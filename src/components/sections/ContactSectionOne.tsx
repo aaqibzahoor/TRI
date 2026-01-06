@@ -322,6 +322,7 @@ export default function ContactSectionOne() {
                 <div className="my-4">
                   {RECAPTCHA_SITE_KEY ? (
                     <ReCAPTCHA
+                      style={{ zIndex: 10}}
                       sitekey={RECAPTCHA_SITE_KEY}
                       onChange={(token) => setCaptchaToken(token || "")}
                     />
