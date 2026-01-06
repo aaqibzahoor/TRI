@@ -2,7 +2,7 @@
 import Image from "next/image";
 import contactImg from "@/assets/img/tri/team3.JPG";
 import React, { useState } from "react";
-// import ReCAPTCHA from "react-google-recaptcha";
+import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from "next/navigation";
 import "./ContactSectionOne.css";
 
@@ -15,7 +15,7 @@ export default function ContactSectionOne() {
     suburb: string;
     service_type: string;
     project_details: string;
-    plans: File | null;
+    attachment: File | null;
     client_id: number;
   }>({
     name: "",
@@ -24,17 +24,16 @@ export default function ContactSectionOne() {
     suburb: "",
     service_type: "",
     project_details: "",
-    plans: null,
+    attachment: null,
     client_id: 2,
   });
 
   const [errors, setErrors] = useState<Record<string, string | null>>({});
   const [submitting, setSubmitting] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  // const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaToken, setCaptchaToken] = useState("");
 
-  // const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL + "/leads";
-  // const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
+  const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL + "/api/leads";
+  const RECAPTCHA_SITE_KEY = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY;
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -48,82 +47,78 @@ export default function ContactSectionOne() {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setFormData((prev) => ({ ...prev, plans: e.target.files![0] }));
+      setFormData((prev) => ({ ...prev, attachment: e.target.files![0] }));
     }
   };
 
-  // const validate = () => {
-  //   const newErrors: Record<string, string> = {};
-  //   if (!formData.name) newErrors.name = "Full Name is required";
-  //   if (!formData.email) newErrors.email = "Email is required";
-  //   if (!formData.phone) newErrors.phone = "Phone is required";
-  //   if (!formData.suburb) newErrors.suburb = "Suburb is required";
-  //   if (!formData.service_type)
-  //     newErrors.service_type = "Service Type is required";
-  //   if (!formData.project_details)
-  //     newErrors.project_details = "Project details are required";
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formData.name) newErrors.name = "Full Name is required";
+    if (!formData.email) newErrors.email = "Email is required";
+    if (!formData.phone) newErrors.phone = "Phone is required";
+    if (!formData.suburb) newErrors.suburb = "Suburb is required";
+    if (!formData.service_type)
+      newErrors.service_type = "Service Type is required";
+    if (!formData.project_details)
+      newErrors.project_details = "Project details are required";
 
-  //   setErrors(newErrors);
-  //   return Object.keys(newErrors).length === 0;
-  // };
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // if (!validate()) return;
+    if (!validate()) return;
 
     setSubmitting(true);
-    setSuccessMessage("");
     setErrors({});
 
     const dataToSend = new FormData();
     dataToSend.append("name", formData.name);
     dataToSend.append("email", formData.email);
-    dataToSend.append("phone", formData.phone);
+    dataToSend.append("phone_number", formData.phone);
     dataToSend.append("suburb", formData.suburb);
     dataToSend.append("service_type", formData.service_type);
     dataToSend.append("project_details", formData.project_details);
     dataToSend.append("client_id", formData.client_id.toString());
-    if (formData.plans) {
-      dataToSend.append("plans", formData.plans);
+    if (formData.attachment) {
+      dataToSend.append("attachment", formData.attachment);
     }
-    // if (captchaToken) {
-    //   dataToSend.append("g-recaptcha-response", captchaToken);
-    // }
+    if (captchaToken) {
+      dataToSend.append("g-recaptcha-response", captchaToken);
+    }
 
-    // try {
-    //   const response = await fetch(API_URL, {
-    //     method: "POST",
-    //     body: dataToSend,
-    //   });
+    try {
+      const response = await fetch(API_URL, {
+        method: "POST",
+        body: dataToSend,
+      });
 
-    //   const data = await response.json();
-    //   if (!response.ok) {
-    //     if (data.errors) setErrors(data.errors);
-    //     else if (data.error?.message) setErrors({ submit: data.error.message });
-    //     return;
-    //   }
+      const data = await response.json();
+      if (!response.ok) {
+        if (data.errors) setErrors(data.errors);
+        else if (data.error?.message) setErrors({ submit: data.error.message });
+        return;
+      }
 
-    //   setSuccessMessage("Quote request submitted successfully!");
-    //   setFormData({
-    //     name: "",
-    //     email: "",
-    //     phone: "",
-    //     suburb: "",
-    //     service_type: "",
-    //     project_details: "",
-    //     plans: null,
-    //     client_id: 2,
-    //   });
-    //   // setCaptchaToken("");
-    //   router.push("/thank-you");
-    // } catch (err) {
-    //   console.error(err);
-    //   setErrors({ submit: "Something went wrong. Please try again." });
-    // } finally {
-    //   setSubmitting(false);
-    // }
-
-    router.push("/thank-you");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        suburb: "",
+        service_type: "",
+        project_details: "",
+        attachment: null,
+        client_id: 2,
+      });
+      setCaptchaToken("");
+      router.push("/thank-you");
+    } catch (err) {
+      console.error(err);
+      setErrors({ submit: "Something went wrong. Please try again." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -295,13 +290,13 @@ export default function ContactSectionOne() {
                 </div>
 
                 <div className="modern-input-group">
-                  <label className="modern-label" htmlFor="plans">
+                  <label className="modern-label" htmlFor="attachment">
                     Upload plans (optional)
                   </label>
                   <input
                     type="file"
-                    name="plans"
-                    id="plans"
+                    name="attachment"
+                    id="attachment"
                     className="modern-input modern-file-input"
                     onChange={handleFileChange}
                   />
@@ -325,7 +320,7 @@ export default function ContactSectionOne() {
                 </div>
 
                 <div className="my-4">
-                  {/* {RECAPTCHA_SITE_KEY ? (
+                  {RECAPTCHA_SITE_KEY ? (
                     <ReCAPTCHA
                       sitekey={RECAPTCHA_SITE_KEY}
                       onChange={(token) => setCaptchaToken(token || "")}
@@ -334,7 +329,7 @@ export default function ContactSectionOne() {
                     <div style={{ color: "red", fontSize: "0.8rem" }}>
                       Recaptcha Key Missing
                     </div>
-                  )} */}
+                  )}
                   {errors["g-recaptcha-response"] && (
                     <span className="error-text">
                       {errors["g-recaptcha-response"]}
@@ -346,9 +341,6 @@ export default function ContactSectionOne() {
                   <p className="error-text" style={{ fontSize: "1rem" }}>
                     {errors.submit}
                   </p>
-                )}
-                {successMessage && (
-                  <p className="success-text">{successMessage}</p>
                 )}
 
                 <div className="submit-container">
