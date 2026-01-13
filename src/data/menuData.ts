@@ -33,7 +33,7 @@ export const menuData: MenuItem[] = [
     // },
     {
         title: "About",
-        path: "/#about",
+        path: "/#process-2",
     },
     {
         title: "Services",
