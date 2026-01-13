@@ -4,7 +4,15 @@ import Image from "next/image";
 
 export default function ProcessSectionTwo() {
   return (
-    <div id="process-2" className="process-section section-padding pb-0">
+    <div
+      id="process-2"
+      className="process-section section-padding pb-0"
+      style={{ position: "relative" }}
+    >
+      <div
+        id="about"
+        style={{ position: "absolute", top: "-100px", left: 0 }}
+      ></div>
       <div className="container">
         <div className="row gy-5">
           <div className="col-xl-5 col-lg-4 col-md-4">

@@ -32,8 +32,12 @@ export const menuData: MenuItem[] = [
     //     ],
     // },
     {
+        title: "About",
+        path: "/#about",
+    },
+    {
         title: "Services",
-         path: "/#service-2",
+        path: "/#service-2",
         // subMenu: [
         //     { title: "Services", path: "/services" },
         //     { title: "Service Details", path: "/services/details" },

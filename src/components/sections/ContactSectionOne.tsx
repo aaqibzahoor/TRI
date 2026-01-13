@@ -9,7 +9,8 @@ import "./ContactSectionOne.css";
 export default function ContactSectionOne() {
   const router = useRouter();
   const [formData, setFormData] = useState<{
-    name: string;
+    first_name: string;
+    last_name: string;
     email: string;
     phone: string;
     suburb: string;
@@ -18,7 +19,8 @@ export default function ContactSectionOne() {
     attachment: File | null;
     client_id: number;
   }>({
-    name: "",
+    first_name: "",
+    last_name: "",
     email: "",
     phone: "",
     suburb: "",
@@ -53,7 +55,8 @@ export default function ContactSectionOne() {
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
-    if (!formData.name) newErrors.name = "Full Name is required";
+    if (!formData.first_name) newErrors.first_name = "First Name is required";
+    if (!formData.last_name) newErrors.last_name = "Last Name is required";
     if (!formData.email) newErrors.email = "Email is required";
     if (!formData.phone) newErrors.phone = "Phone is required";
     if (!formData.suburb) newErrors.suburb = "Suburb is required";
@@ -74,7 +77,8 @@ export default function ContactSectionOne() {
     setErrors({});
 
     const dataToSend = new FormData();
-    dataToSend.append("name", formData.name);
+    dataToSend.append("first_name", formData.first_name);
+    dataToSend.append("last_name", formData.last_name);
     dataToSend.append("email", formData.email);
     dataToSend.append("phone_number", formData.phone);
     dataToSend.append("suburb", formData.suburb);
@@ -102,7 +106,8 @@ export default function ContactSectionOne() {
       }
 
       setFormData({
-        name: "",
+        first_name: "",
+        last_name: "",
         email: "",
         phone: "",
         suburb: "",
@@ -156,20 +161,39 @@ export default function ContactSectionOne() {
                 <div className="row">
                   <div className="col-md-6">
                     <div className="modern-input-group">
-                      <label className="modern-label" htmlFor="name">
-                        Full Name
+                      <label className="modern-label" htmlFor="first_name">
+                        First Name
                       </label>
                       <input
                         type="text"
-                        name="name"
-                        id="name"
+                        name="first_name"
+                        id="first_name"
                         className="modern-input"
-                        placeholder="Full Name"
-                        value={formData.name}
+                        placeholder="First Name"
+                        value={formData.first_name}
                         onChange={handleChange}
                       />
-                      {errors.name && (
-                        <span className="error-text">{errors.name}</span>
+                      {errors.first_name && (
+                        <span className="error-text">{errors.first_name}</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="last_name">
+                        Last Name
+                      </label>
+                      <input
+                        type="text"
+                        name="last_name"
+                        id="last_name"
+                        className="modern-input"
+                        placeholder="Last Name"
+                        value={formData.last_name}
+                        onChange={handleChange}
+                      />
+                      {errors.last_name && (
+                        <span className="error-text">{errors.last_name}</span>
                       )}
                     </div>
                   </div>
@@ -192,9 +216,6 @@ export default function ContactSectionOne() {
                       )}
                     </div>
                   </div>
-                </div>
-
-                <div className="row">
                   <div className="col-md-6">
                     <div className="modern-input-group">
                       <label className="modern-label" htmlFor="phone">
@@ -214,6 +235,9 @@ export default function ContactSectionOne() {
                       )}
                     </div>
                   </div>
+                </div>
+
+                <div className="row">
                   <div className="col-md-6">
                     <div className="modern-input-group">
                       <label className="modern-label" htmlFor="suburb">
@@ -233,60 +257,63 @@ export default function ContactSectionOne() {
                       )}
                     </div>
                   </div>
-                </div>
-
-                <div className="modern-input-group">
-                  <label className="modern-label" htmlFor="service_type">
-                    Service Type
-                  </label>
-                  <div style={{ position: "relative" }}>
-                    <select
-                      name="service_type"
-                      id="service_type"
-                      className="modern-select"
-                      value={formData.service_type}
-                      onChange={handleChange}
-                    >
-                      <option value="">Select Service Type</option>
-                      <option value="Window replacement">
-                        Window replacement
-                      </option>
-                      <option value="Architectural or bespoke window">
-                        Architectural or bespoke window
-                      </option>
-                      <option value="New build">New build</option>
-                      <option value="Renovation">Renovation</option>
-                    </select>
-                    <div
-                      style={{
-                        position: "absolute",
-                        right: "15px",
-                        top: "50%",
-                        transform: "translateY(-50%)",
-                        pointerEvents: "none",
-                        color: "#666",
-                      }}
-                    >
-                      <svg
-                        width="12"
-                        height="8"
-                        viewBox="0 0 12 8"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M1 1.5L6 6.5L11 1.5"
-                          stroke="#666"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
+                  <div className="col-md-6">
+                    <div className="modern-input-group">
+                      <label className="modern-label" htmlFor="service_type">
+                        Service Type
+                      </label>
+                      <div style={{ position: "relative" }}>
+                        <select
+                          name="service_type"
+                          id="service_type"
+                          className="modern-select"
+                          value={formData.service_type}
+                          onChange={handleChange}
+                        >
+                          <option value="">Select Service Type</option>
+                          <option value="Window replacement">
+                            Window replacement
+                          </option>
+                          <option value="Architectural or bespoke window">
+                            Architectural or bespoke window
+                          </option>
+                          <option value="New build">New build</option>
+                          <option value="Renovation">Renovation</option>
+                        </select>
+                        <div
+                          style={{
+                            position: "absolute",
+                            right: "15px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            pointerEvents: "none",
+                            color: "#666",
+                          }}
+                        >
+                          <svg
+                            width="12"
+                            height="8"
+                            viewBox="0 0 12 8"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M1 1.5L6 6.5L11 1.5"
+                              stroke="#666"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                      </div>
+                      {errors.service_type && (
+                        <span className="error-text">
+                          {errors.service_type}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  {errors.service_type && (
-                    <span className="error-text">{errors.service_type}</span>
-                  )}
                 </div>
 
                 {/* <div className="modern-input-group">
@@ -322,7 +349,7 @@ export default function ContactSectionOne() {
                 <div className="my-4">
                   {RECAPTCHA_SITE_KEY ? (
                     <ReCAPTCHA
-                      style={{ zIndex: 10}}
+                      style={{ zIndex: 10 }}
                       sitekey={RECAPTCHA_SITE_KEY}
                       onChange={(token) => setCaptchaToken(token || "")}
                     />
